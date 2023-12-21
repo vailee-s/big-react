@@ -101,3 +101,41 @@ conventional规范集意义
 - `perf`: 性能优化
 - `test`: 测试
 - `build`: 变更项目构建或外部依赖(例如: webpack, npm, rollup配置)
+
+### 1.4.7 安装typescript
+```js
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "moduleResolution": "Node",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "baseUrl": "./packages",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    }
+  },
+}
+```
+### 1.4.8 选择打包工具
+```js
+pnpm i rollup -D -w
+```
+
