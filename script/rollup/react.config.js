@@ -1,4 +1,5 @@
 import { getBaseRollupPlugins, getPackageName, resolvePkgPath } from './utils';
+import generationPackageJson from 'rollup-plugin-generate-package-json';
 
 const { name, module } = getPackageName('react'); // package.json中的name字段
 // react包的路径
@@ -14,7 +15,19 @@ export default [
 			name: 'index.js',
 			format: 'umd'
 		},
-		plugins: getBaseRollupPlugins()
+		plugins: [
+			...getBaseRollupPlugins(),
+			generationPackageJson({
+				inputFolder: pkgPath,
+				outputFolder: distPath,
+				baseContents: ({ name, description, version }) => ({
+					name,
+					description,
+					version,
+					main: 'index.js'
+				})
+			})
+		]
 	},
 	// jsx-runtime
 	{
